@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文章 - 我的博客</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← 返回首页</a>
+        <div id="post-content"></div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        // 从 URL 获取文章 ID
+        const urlParams = new URLSearchParams(window.location.search);
+        const postId = urlParams.get('id');
+        
+        async function loadPost() {
+            const post = await getPost(postId);
+            const contentDiv = document.getElementById('post-content');
+            
+            contentDiv.innerHTML = `
+                <h1>${post.title}</h1>
+                <div class="post-meta">
+                    发布于 ${new Date(post.created_at).toLocaleDateString('zh-CN')}
+                </div>
+                <div class="post-body">
+                    ${marked.parse(post.body)}
+                </div>
+            `;
+        }
+        
+        if (postId) {
+            loadPost();
+        } else {
+            document.getElementById('post-content').innerHTML = '<p>文章不存在</p>';
+        }
+    </script>
+</body>
+</html>

@@ -3,13 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的网站</title>
+    <title>我的博客</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
     <div class="container">
-        <h1>Hello Vercel</h1>
-        <p>这是我的第一个网站</p>
+        <h1>📝 我的博客</h1>
+        <div id="posts-list"></div>
     </div>
+    <script src="script.js"></script>
+    <script>
+        // 加载文章列表
+        async function loadPosts() {
+            const posts = await getPosts();
+            const listDiv = document.getElementById('posts-list');
+            
+            listDiv.innerHTML = posts.map(post => `
+                <div class="post-item">
+                    <h2>
+                        <a href="post.html?id=${post.number}">
+                            ${post.title}
+                        </a>
+                    </h2>
+                    <div class="post-meta">
+                        发布于 ${new Date(post.created_at).toLocaleDateString('zh-CN')}
+                        ${post.labels.map(l => `<span class="label">${l.name}</span>`).join('')}
+                    </div>
+                    <p>${post.body.substring(0, 150)}...</p>
+                </div>
+            `).join('');
+        }
+        
+        loadPosts();
+    </script>
 </body>
 </html>
