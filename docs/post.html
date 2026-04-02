@@ -31,7 +31,7 @@
                     ${post.labels ? post.labels.map(l => `<span class="label">${l.name}</span>`).join('') : ''}
                 </div>
                 <div class="post-body">
-                    ${marked.parse(post.body)}
+                    ${marked.parse(String(post.body).replace("\\n",'\n'))}
                 </div>
             `;
         }
