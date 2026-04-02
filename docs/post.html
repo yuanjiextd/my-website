@@ -19,13 +19,16 @@
         const postId = urlParams.get('id');
         
         async function loadPost() {
+            // 调用 script.js 里的 getPost 函数
             const post = await getPost(postId);
             const contentDiv = document.getElementById('post-content');
             
+            // 渲染单篇文章
             contentDiv.innerHTML = `
                 <h1>${post.title}</h1>
                 <div class="post-meta">
                     发布于 ${new Date(post.created_at).toLocaleDateString('zh-CN')}
+                    ${post.labels ? post.labels.map(l => `<span class="label">${l.name}</span>`).join('') : ''}
                 </div>
                 <div class="post-body">
                     ${marked.parse(post.body)}
