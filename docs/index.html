@@ -30,7 +30,7 @@
                         发布于 ${new Date(post.created_at).toLocaleDateString('zh-CN')}
                         ${post.labels.map(l => `<span class="label">${l.name}</span>`).join('')}
                     </div>
-                    <p>${post.body.substring(0, 150)}...</p>
+                    <p>${post.body.substring(0, 15)}...</p>
                 </div>
             `).join('');
         }
