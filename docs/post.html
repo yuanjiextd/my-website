@@ -8,7 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
-    <div class="container">
+    <div class="container post-container">
         <a href="index.html" class="back-link">← 返回首页</a>
         <div id="post-content"></div>
     </div>
@@ -31,7 +31,7 @@
                     ${post.labels ? post.labels.map(l => `<span class="label">${l.name}</span>`).join('') : ''}
                 </div>
                 <div class="post-body">
-                    ${marked.parse(String(post.body).replace("\\n",'\n'))}
+                    ${marked.parse(String(post.body).replace(/\n/g, '<br>'))}
                 </div>
             `;
         }

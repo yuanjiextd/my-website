@@ -10,29 +10,237 @@ body {
     color: #1d1d1f;
     line-height: 1.5;
     min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    padding: 2rem 1rem;
 }
 
+/* 容器 - 首页和文章页共用基础样式 */
 .container {
-    max-width: 640px;
-    margin: 2rem;
-    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
     background-color: #ffffff;
-    border-radius: 1rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    text-align: center;
+    border-radius: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    padding: 2rem;
 }
 
-h1 {
-    font-size: 2.5rem;
+/* 文章页容器 - 更宽，左对齐 */
+.post-container {
+    max-width: 900px;
+    text-align: left;
+}
+
+/* ========== 首页文章列表样式 ========== */
+.posts-list {
+    text-align: left;
+}
+
+.post-item {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.post-item:last-child {
+    border-bottom: none;
+}
+
+.post-item h2 {
+    font-size: 1.5rem;
     font-weight: 600;
-    margin-bottom: 1rem;
-    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
 }
 
-p {
-    font-size: 1.125rem;
+.post-item h2 a {
+    color: #1155bb;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.post-item h2 a:hover {
+    color: #0066cc;
+    text-decoration: underline;
+}
+
+.post-meta {
+    font-size: 0.875rem;
+    color: #8e8e93;
+    margin-bottom: 0.75rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.label {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    color: #666;
+    text-decoration: none;
+}
+
+/* 动态标签颜色（从 GitHub 标签颜色来） */
+.label[data-color] {
+    background-color: #c66486;
+    color: white;
+}
+
+.post-item p {
     color: #6c6c70;
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+}
+
+.read-more {
+    color: #0066cc;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.read-more:hover {
+    text-decoration: underline;
+}
+
+/* ========== 文章正文样式 ========== */
+.post-body {
+    font-size: 1.0625rem;
+    line-height: 1.8;
+    color: #1d1d1f;
+}
+
+.post-body h1,
+.post-body h2,
+.post-body h3 {
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.post-body h1 { font-size: 1.8rem; }
+.post-body h2 { font-size: 1.5rem; border-bottom: 1px solid #e9ecef; padding-bottom: 0.3em; }
+.post-body h3 { font-size: 1.25rem; }
+
+.post-body p {
+    margin-bottom: 1.25em;
+}
+
+.post-body ul,
+.post-body ol {
+    margin: 1em 0;
+    padding-left: 2em;
+}
+
+.post-body li {
+    margin-bottom: 0.25em;
+}
+
+/* 代码块 */
+.post-body pre {
+    background-color: #1e1e1e;
+    color: #d4d4d4;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin: 1.25em 0;
+}
+
+.post-body code {
+    font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+    font-size: 0.875em;
+    background-color: #f5f5f7;
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.25rem;
+    color: #d14;
+}
+
+.post-body pre code {
+    background-color: transparent;
+    padding: 0;
+    color: inherit;
+}
+
+/* 引用块 */
+.post-body blockquote {
+    margin: 1.25em 0;
+    padding-left: 1rem;
+    border-left: 4px solid #c66486;
+    color: #6c6c70;
+    font-style: italic;
+}
+
+/* 图片 */
+.post-body img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    margin: 1em 0;
+}
+
+/* 表格 */
+.post-body table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.25em 0;
+}
+
+.post-body th,
+.post-body td {
+    border: 1px solid #e9ecef;
+    padding: 0.5rem;
+    text-align: left;
+}
+
+.post-body th {
+    background-color: #f5f5f7;
+}
+
+/* 链接 */
+.post-body a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+.post-body a:hover {
+    text-decoration: underline;
+}
+
+/* 返回链接 */
+.back-link {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    color: #0066cc;
+    text-decoration: none;
+    font-size: 0.875rem;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+/* ========== 响应式 ========== */
+@media (max-width: 640px) {
+    body {
+        padding: 1rem;
+    }
+    
+    .container {
+        padding: 1.25rem;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    .post-body {
+        font-size: 1rem;
+    }
+}
+
+.horizontal-line {
+    border-bottom: 2px solid #d4d4d4;
 }

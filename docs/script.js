@@ -13,6 +13,7 @@ async function getPosts() {
 async function getPost(postNumber) {
     const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/issues/${postNumber}`);
     const issue = await response.json();
+    console.info(issue)
     return issue;
 }
 
